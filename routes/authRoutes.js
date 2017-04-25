@@ -11,10 +11,10 @@ authRoutes.post("/login", function (req, res) {
       if(!user){
         return res.status(401).send({success: false, message: "Username not found."})
       } else if (user) {
-
-        if (user.password !== req.body.password){
-          return res.status(401).send({success: false, message: "Incorrect Password"})
-      } else {
+        user.checkPassword(req.body.password, function (err, match) {
+            if (err) throw (err);
+            if (!match) res.status(401).send({success: false, message: "Incorrect password"});
+            else {
 
             // If username and password both match an entry in the database,
             // create a JWT! Add the user object as the payload and pass in the secret.
@@ -24,11 +24,12 @@ authRoutes.post("/login", function (req, res) {
             var token = jwt.sign(user.toObject(), config.secret, {expiresIn: "24h"});
 
             // Send the token back to the client app.
-            res.send({token: token, user: user.toObject(), success: true, message: "Here's your token!"})
-      }
-    }
-  });
-});
+            res.send({user: user.withoutPassword(), token: token, user: user.toObject(), success: true, message: "Here's your token!"})
+            }
+          });
+        }
+      });
+    });
 
 authRoutes.post("/signup", function (req, res) {
   User.find({username: req.body.username}, function (err, existingUser){
@@ -42,6 +43,19 @@ authRoutes.post("/signup", function (req, res) {
         });
       }
   })
+});
+
+authRoutes.post("/change-password", function (req, res){
+  User.findById(req.user._id, function (err, user){
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      user.password = req.body.newPassword || user.password;
+      user.save(function(err, user){
+        res.send({success: true, user: user.withoutPassword()});
+      });
+    }
+  });
 });
 
 module.exports = authRoutes;

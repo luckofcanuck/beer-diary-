@@ -13,7 +13,9 @@ var expressJwt = require("express-jwt");
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use("/api", expressJwt({secret: config.secret}));
+app.use("/api/user", require("./routes/userRoute"));
 app.use("/api/beer", beerRouter);
+app.use("/auth/change-password", expressJwt({secret: config.secret}));
 app.use("/auth", require("./routes/authRoutes"));
 
 
