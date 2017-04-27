@@ -1,6 +1,10 @@
 /*body*/
 body {
-  background-color: black;
+  background: url("components/img/pawel-kadysz-90225.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 /*body*/
 
@@ -36,6 +40,15 @@ nav {
   animation: 0.5s flipInX ease;
 }
 /*home*/
+
+
+
+/*cards*/
+.beerCard {
+  width: auto;
+  height: auto;
+  background-color: white;
+}
 
 
 
