@@ -1,9 +1,10 @@
-var app = angular.module("BeerApp", ["ngRoute", "BeerApp.Auth"]);
+var app = angular.module("BeerApp", ["ngRoute", "ngAnimate", "BeerApp.Auth"]);
 
 app.config(function ($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "components/home/home.html"
+            templateUrl: "components/home/home.html",
+            controller: "HomeController"
         })
         .when("/beers", {
             templateUrl: "components/beers/beers.html",

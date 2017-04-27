@@ -1,0 +1,120 @@
+/*body*/
+body {
+  background-color: black;
+}
+/*body*/
+
+
+
+
+/*nav*/
+nav {
+  border-radius: 0px !important;
+}
+/*nav*/
+
+
+/*home*/
+.webtitle {
+  font-family: "Alex Brush", cursive;
+  color: lightgrey;
+}
+
+.homeContainer {
+
+}
+
+.homeButtons.ng-hide-remove {
+  animation: 0.5s waitIn ease;
+}
+
+.findABeer.ng-hide-add {
+  animation: 0.25s flipOutX ease;
+}
+
+.findABeer.ng-hide-remove {
+  animation: 0.5s flipInX ease;
+}
+/*home*/
+
+
+
+
+
+
+/*animations*/
+@keyframes flipInX {
+  0% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 45deg);
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  50% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: perspective(400px);
+    transform: perspective(400px);
+    transform: perspective(400px);
+    opacity: 1;
+  }
+}
+
+@keyframes flipOutX {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    opacity: 0;
+  }
+}
+
+@keyframes waitIn {
+  0% {
+    position: absolute;
+    opacity: 0;
+    display: none;
+  }
+
+  50% {
+    position: absolute;
+    opacity: 0;
+    display: none;
+  }
+
+  51% {
+    position: static;
+    transform: perspective(400px) rotate3d(1, 0, 0, 45deg);
+    transition-timing-function: ease-in;
+  }
+
+  75% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    opacity: 0.8;
+  }
+
+  90% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+/*animations*/

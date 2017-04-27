@@ -3,6 +3,14 @@ var Schema = mongoose.Schema;
 
 var beerSchema = new Schema({
   name: String,
+  ibu: Number,
+  description: String,
+  labels: {
+    medium: String
+  },
+  abv: Number,
+  userDes: String,
+  userRating: Number,
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",

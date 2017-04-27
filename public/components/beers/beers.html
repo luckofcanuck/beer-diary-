@@ -1,5 +1,16 @@
-<div class="row">
-    <div class="col-md-4" ng-repeat="beer in beers">
-        <h3>{{beer}}</h3>
-    </div>
+<div class="row" ng-repeat="beer in beers track by $index">
+  <div class="beerCard">
+    {{beer.name}}
+    {{beer.abv}}
+    <img ng-src="{{beer.labels.medium}}" /><span ng-show="!beer.labels">No label was found for this beer. Sorry!</span>
+    {{beer.description}}<span ng-show="!beer.description.length">The external database has no description for this beer... Save your own thoughts in your diary!</span>
+    {{beer.ibu}}<span ng-show="!beer.ibu.length">The external database has no information on this beer's IBUs. Log what you think of the flavor profile in your diary!</span>
+  </div>
+  <button ng-click="userInput = !userInput"></button>
+
+  <div ng-show="userInput">
+    <input placeholder="What do you think of the beer?" ng-model="beer.userDes" />
+    <input type="number" ng-model="beer.userRating" /> Rating /10.
+    <button ng-click="editBeer(beer)">Submit</button>
+  </div>
 </div>
