@@ -18,10 +18,11 @@
                 <li ng-show="userService.isAuthenticated()" class="active"><a href="#/beers">My Diary<span class="sr-only">(current)</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <li ng-if="userService.admin === true"><a href="#/admin">Admin</a></li>
+              <li ng-show="userService.isAuthenticated()"><a href="#/profile">Profile</a></li>
               <li ng-hide="userService.isAuthenticated()"><a href="#/login">Login</a></li>
               <li ng-hide="userService.isAuthenticated()"><a href="#/signup">Signup</a></li>
               <li ng-show="userService.isAuthenticated()"><a href="#/logout">Logout</a></li>
-              <li ng-show="userService.isAuthenticated()"><a href="#/profile">Profile</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

@@ -14,4 +14,8 @@ app.config(function ($routeProvider) {
             templateUrl: "components/profile/profile.html",
             controller: "ProfileController"
         })
+        .when("/admin", {
+          templateUrl: "components/admin/admin.html",
+          controller: "adminController"
+        })
 });

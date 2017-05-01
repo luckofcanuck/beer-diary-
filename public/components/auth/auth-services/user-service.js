@@ -1,6 +1,7 @@
 app.service("UserService", ["$http", "$location", "TokenService", function ($http, $location, TokenService){
   var self = this;
   this.currentUser = {};
+  this.admin = false;
 
   this.signup = function (user) {
     return $http.post("/auth/signup", user);
@@ -23,6 +24,7 @@ app.service("UserService", ["$http", "$location", "TokenService", function ($htt
 
   this.logout = function (){
     TokenService.removeToken();
+    self.admin = false;
     $location.path("/");
   };
 
