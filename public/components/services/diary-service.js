@@ -10,15 +10,6 @@ app.service("DiaryService", ["$http", function ($http){
       });
   };
 
-  this.savebeer = function (beer) {
-      return $http.post("/api/beer", beer).then(function (response) {
-          return response.data;
-      }, function (response) {
-          alert("Error " + response.status + ": " + response.statusText);
-      });
-  };
-
-
     this.saveBeer = function(input){
       return $http.post("/api/beer", input).then(function(response){
         console.log(response);
@@ -31,6 +22,7 @@ app.service("DiaryService", ["$http", function ($http){
         return response;
       })
     }
+
 
 
 

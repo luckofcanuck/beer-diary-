@@ -1,9 +1,54 @@
 
-
-<br />
-<br />
 <br />
 <br />
 
 
-<h1>{{test}}</h1>
+<button ng-click="getBeers()">get em</button>
+<button ng-click="getUsers()">get em too</button>
+
+<div ng-repeat="beer in beers track by $index">
+  <div class="beersListedResponse" ng-hide="editing">
+    Name {{beer.name}}
+    ID {{beer._id}}
+    ABV {{beer.abv}}
+    IBU {{beer.ibu}}
+    Labels {{beer.labels}}
+    User ID {{beer.user}}
+    User Description {{beer.userDes}}
+    User Rating{{beer.userRating}}
+    <button ng-click="editing = !editing">Edit</button>
+    <button ng-click="deleteBeer(beer, $index)">x</button>
+  </div>
+
+  <div class="beersListedEditor" ng-show="editing">
+    <input type="text" ng-model="beer.name" />
+    <input type="text" ng-model="beer.abv" />
+    <input type="text" ng-model="beer.ibu" />
+    <input type="text" ng-model="beer.userDes" />
+    <input type="text" ng-model="beer.userRating" />
+    <button ng-click="editing = !editing">x</button>
+    <button ng-click="editBeer(beer); editing = !editing">Submit Changes</button>
+  </div>
+
+</div>
+
+
+<div ng-repeat="user in users track by $index">
+  <div class="usersListedResponse" ng-hide="userEdit">
+    Name {{user.name}}
+    Username {{user.username}}
+    Admin {{user.admin}}
+    ID {{user._id}}
+    <button ng-click="userEdit = !userEdit">Edit</button>
+    <button ng-click="deleteUser(user, $index)">x</button>
+  </div>
+
+  <div class="usersListedEditor" ng-show="userEdit">
+    <input type="text" ng-model="user.name" />
+    <input type="text" ng-model="user.username" />
+    <input type="checkbox" ng-model="user.admin" />
+    <button ng-click="userEdit = !userEdit">x</button>
+    <button ng-click="editUser(user); userEdit = !userEdit">Submit Changes</button>
+  </div>
+
+</div>
