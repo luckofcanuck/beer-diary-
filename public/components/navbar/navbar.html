@@ -1,29 +1,39 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/">Home</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li ng-show="userService.isAuthenticated()" class="active"><a href="#/beers">My Diary<span class="sr-only">(current)</span></a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li ng-if="userService.admin === true"><a href="#/admin">Admin</a></li>
-              <li ng-show="userService.isAuthenticated()"><a href="#/profile">Profile</a></li>
-              <li ng-hide="userService.isAuthenticated()"><a href="#/login">Login</a></li>
-              <li ng-hide="userService.isAuthenticated()"><a href="#/signup">Signup</a></li>
-              <li ng-show="userService.isAuthenticated()"><a href="#/logout">Logout</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+<div class="navBar">
+
+    <a class="myBrand" href="#/">Home </a>
+      <div class="onTheBar">
+        <ul class="myDiary">
+            <li ng-show="userService.isAuthenticated()" class="active"><a href="#/beers">My Diary<span class="sr-only">(current)</span></a></li>
+        </ul>
+        <ul>
+          <li ng-if="userService.admin === true"><a href="#/admin">Admin</a></li>
+          <li ng-show="userService.isAuthenticated()"><a href="#/profile">Profile</a></li>
+          <li ng-hide="userService.isAuthenticated()"><a href="#/signup">Signup</a></li>
+          <li ng-hide="userService.isAuthenticated()"><a href="#/login">Login</a></li>
+          <li ng-show="userService.isAuthenticated()"><a href="#/logout">Logout</a></li>
+        </ul>
+      </div>
+
+
+
+    	<div id="nav-icon" ng-click="showing = !showing" ng-class="showing ? 'x': 'normal'">
+    		<span id="span1"></span>
+    		<span id="span2"></span>
+    		<span id="span3"></span>
+      </div>
+
+</div>
+
+
+
+<div class="container-fluid navSlide" ng-show="showing">
+  <ul class="slideUl">
+    <li class="slideLi" ng-show="userService.isAuthenticated()" class="active"><a href="#/beers" ng-click="showing = false">My Diary<span class="sr-only">(current)</span></a></li>
+    <li class="slideLi" ng-if="userService.admin === true"><a href="#/admin" ng-click="showing = false">Admin</a></li>
+    <li class="slideLi" ng-show="userService.isAuthenticated()"><a href="#/profile" ng-click="showing = false">Profile</a></li>
+    <li class="slideLi" ng-hide="userService.isAuthenticated()"><a href="#/signup" ng-click="showing = false">Signup</a></li>
+    <li class="slideLi" ng-hide="userService.isAuthenticated()"><a href="#/login" ng-click="showing = false">Login</a></li>
+    <li class="slideLi" ng-show="userService.isAuthenticated()"><a href="#/logout" ng-click="showing = false">Logout</a></li>
+  </ul>
+</div>
