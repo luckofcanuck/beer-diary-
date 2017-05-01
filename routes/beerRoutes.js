@@ -19,6 +19,7 @@ beerRouter.route('/')
       })
   });
 
+
 beerRouter.route('/:beerId')
   .get(function(req, res){
     Beer.findOne({_id: req.params.beerId, user: req.user._id}, function(err, beer){
@@ -41,5 +42,6 @@ beerRouter.route('/:beerId')
       res.sent(beer);
     })
   })
+
 
   module.exports = beerRouter;
