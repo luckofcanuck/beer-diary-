@@ -1,34 +1,40 @@
-
-<br />
-<br />
+<div class="adminContainer">
 
 
-<button ng-click="getBeers()">get em</button>
-<button ng-click="getUsers()">get em too</button>
+
+<div class="adminFilter">
+  <button ng-click="getBeers()">Beers</button>
+  <button ng-click="getUsers()">Users</button>
+</div>
+
 
 <div ng-repeat="beer in beers track by $index">
-  <div class="beersListedResponse" ng-hide="editing">
-    Name {{beer.name}}
-    ID {{beer._id}}
-    ABV {{beer.abv}}
-    IBU {{beer.ibu}}
-    Labels {{beer.labels}}
-    User ID {{beer.user}}
-    User Description {{beer.userDes}}
-    User Rating{{beer.userRating}}
+  <div class="beersListedResponse">
+    <div ng-hide="editing">
+
+      Name {{beer.name}}
+      ID {{beer._id}}
+      ABV {{beer.abv}}
+      IBU {{beer.ibu}}
+      Labels {{beer.labels}}
+      User ID {{beer.user}}
+      User Description {{beer.userDes}}
+      User Rating{{beer.userRating}}
+    </div>
     <button ng-click="editing = !editing">Edit</button>
     <button ng-click="deleteBeer(beer, $index)">x</button>
+    <div class="beersListedEditor" ng-show="editing">
+      <input type="text" placholder="Name" ng-model="beer.name" />
+      <input type="text" placholder="Abv" ng-model="beer.abv" />
+      <input type="text" placholder="IBU" ng-model="beer.ibu" />
+      <input type="text" placholder="User Description" ng-model="beer.userDes" />
+      <input type="text" placholder="User Rating" ng-model="beer.userRating" />
+      <button ng-click="editing = !editing">x</button>
+      <button ng-click="editBeer(beer); editing = !editing">Submit Changes</button>
+    </div>
   </div>
 
-  <div class="beersListedEditor" ng-show="editing">
-    <input type="text" ng-model="beer.name" />
-    <input type="text" ng-model="beer.abv" />
-    <input type="text" ng-model="beer.ibu" />
-    <input type="text" ng-model="beer.userDes" />
-    <input type="text" ng-model="beer.userRating" />
-    <button ng-click="editing = !editing">x</button>
-    <button ng-click="editBeer(beer); editing = !editing">Submit Changes</button>
-  </div>
+
 
 </div>
 
@@ -50,5 +56,7 @@
     <button ng-click="userEdit = !userEdit">x</button>
     <button ng-click="editUser(user); userEdit = !userEdit">Submit Changes</button>
   </div>
+
+</div>
 
 </div>

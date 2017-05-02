@@ -1,16 +1,39 @@
-<div class="row" ng-repeat="beer in beers track by $index">
-  <div class="beerCard">
-    {{beer.name}}
-    {{beer.abv}}
-    <img ng-src="{{beer.labels.medium}}" /><span ng-show="!beer.labels">No label was found for this beer. Sorry!</span>
-    {{beer.description}}<span ng-show="!beer.description.length">The external database has no description for this beer... Save your own thoughts in your diary!</span>
-    {{beer.ibu}}<span ng-show="!beer.ibu.length">The external database has no information on this beer's IBUs. Log what you think of the flavor profile in your diary!</span>
-  </div>
-  <button ng-click="userInput = !userInput"></button>
+<div class="userBeers" ng-repeat="beer in beers track by $index">
 
-  <div ng-show="userInput">
-    <input placeholder="What do you think of the beer?" ng-model="beer.userDes" />
-    <input type="number" ng-model="beer.userRating" /> Rating /10.
-    <button ng-click="editBeer(beer)">Submit</button>
+  <div class="userBeerCard">
+    <div class="userLeftWrapper">
+      <h2>{{beer.name}}</h2>
+      <div class="notes">
+        <span ng-click="userInput = !userInput" ng-hide="userInput" class="notesSpan">See your notes!</span>   <span ng-show="userInput"><br /></span>
+      </div>
+      <img ng-src="{{beer.labels.medium}}" /><span class="error" ng-show="!beer.labels">No image was found for this beer. Sorry!</span>
+      <br />
+      <span class="abv" >{{beer.abv}}% abv. - </span><span class="error" ng-show="!beer.abv">We could not find information on this beer's alcoholic content. Sorry!</span>
+      <span class="ibu" ng-hide="!beer.ibu">{{beer.ibu}} IBUs.</span><span class="error" ng-show="!beer.ibu">The external database has no information on this beer's IBUs. Log what you think of the flavor profile in your diary!</span>
+      <br />
+      Description: {{beer.description}}<span class="error" ng-show="!beer.description.length">The external database has no description for this beer... Save your own thoughts in your diary!</span>
+    </div>
+  <div class="userRightWrapper" ng-show="userInput">
+    <div class="usersHiding" ng-hide="userEditing">
+      <span class="userDes">{{beer.userDes}}</span>
+      <span class="userRating" ng-hide="!beer.userRating">{{beer.userRating}}/10</span>
+    </div>
+
+    <div ng-show="!beer.userDes.length && !beer.userRating.length" class="editExisting">
+      <span class="userEdit" ng-click="userEditing = !userEditing">Click here to add to your diary entry.</span>
+    </div>
+
+    <div ng-hide="!beer.userDes.length && !beer.userRating.length || userEditing" class="editExisting">
+      <span class="userEdit" ng-click="userEditing = !userEditing">Click here to edit your current diary entry.</span>
+    </div>
+
+    <div ng-show="userEditing" class="userForm">
+      <input placeholder="What do you think of the beer?" ng-model="beer.userDes" />
+      <input type="number" ng-model="beer.userRating" /> Rating /10.
+      <button ng-click="editBeer(beer); userEditing = false">Submit</button>
+    </div>
+    <span class="closer" ng-click="userEditing = false" ng-show="userEditing">(Back)</span>
+    <span class="closeUser" ng-click="userInput = false" ng-hide="userEditing">(Close)</span>
   </div>
+</div>
 </div>

@@ -30,7 +30,7 @@
 <div class="container-fluid navSlide" ng-show="showing">
   <ul class="slideUl">
     <li class="slideLi" ng-show="userService.isAuthenticated()" class="active"><a href="#/beers" ng-click="showing = false">My Diary<span class="sr-only">(current)</span></a></li>
-    <li class="slideLi" ng-if="userService.admin === true"><a href="#/admin" ng-click="showing = false">Admin</a></li>
+    <li class="slideLi" ng-if="userService.currentUser.admin === true"><a href="#/admin" ng-click="showing = false">Admin</a></li>
     <li class="slideLi" ng-show="userService.isAuthenticated()"><a href="#/profile" ng-click="showing = false">Profile</a></li>
     <li class="slideLi" ng-hide="userService.isAuthenticated()"><a href="#/signup" ng-click="showing = false">Signup</a></li>
     <li class="slideLi" ng-hide="userService.isAuthenticated()"><a href="#/login" ng-click="showing = false">Login</a></li>

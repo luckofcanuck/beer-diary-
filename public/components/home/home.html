@@ -1,49 +1,72 @@
 <div class="homeContainer">
-  <h1 class="largest">Beer Diary, </h1>
-  <p>
-    On <i>Beer Diary,</i> you can search for a beer, and find all kinds of great information about it. <a href="#/signup">Sign up</a> to rate beers you find, and write down your impressions. We wish you the best in your beer explorations.
-  </p>
-  <p class="signed"><i>
-    Yours Truly,
-    <br />
-    Beer Diary.</i>
-  </p>
 
+  <img class="bigImg" src="components/img/pawel-kadysz-90225.jpg" ng-click="searching = false"/>
+
+  <div class="wordsContainer">
+    <h1 class="largest">Beer Diary, </h1>
+    <p>
+      On <i>Beer Diary,</i> you can search for a beer, and find all kinds of great information about it. <a href="#/signup">Sign up</a> to rate beers you find, and write down your impressions. We wish you the best in your beer explorations.
+    </p>
+    <p class="signed"><i>
+      Yours Truly,
+      <br />
+      Beer Diary.</i>
+    </p>
     <button class="btn btn-primary btn-lg homeBtn" ng-click="searching = !searching" ng-hide="searching">Find A Beer</button>
-
-
-
-  <div class="findABeer" ng-show="searching">
-    <input type="text" class="beerSearch" ng-model="beerName" />
-    <button class="homeExit" ng-click="searching = false">x</button>
-    <button class="btn btn-primary btn-md searchBtn" ng-click="findABeer(beerName)">Search</button>
-  </div>
-
-<div class="container-fluid responses">
-
-  <div class="oneBeer row" ng-repeat="beer in beers | limitTo: 1 track by $index">
-    <div class="beerCard col-xs-12 col-md-4">
-      {{beer.name}}
-      {{beer.abv}}
-      <img ng-src="{{beer.labels.medium}}" /><span ng-show="!beer.labels">No label was found for this beer. Sorry!</span>
-      {{beer.description}}<span ng-show="!beer.description.length">The external database has no description for this beer... Save your own thoughts in your diary!</span>
-      {{beer.ibu}}<span ng-show="!beer.ibu.length">The external database has no information on this beer's IBUs. Log what you think of the flavor profile in your diary!</span>
-      <div id="moreSearch" >
-        Not quite the beer you were looking for? Click for more results with a similar name...<button id="moreButton" ng-click="moreResults(beer.name)">More</button>
-      </div>
-      <button ng-click="saveBeer(beer)"></button>
+    <div class="findABeer" ng-show="searching">
+      <input type="text" class="beerSearch" ng-model="beerName" />
+      <button class="btn btn-primary btn-md searchBtn" ng-click="findABeer(beerName)">Search</button>
     </div>
   </div>
 
 
-    <div class="moreBeers row" ng-repeat="beer in moreBeers | limitTo: 12 track by $index">
-      <div class="beerCard col-xs-12 col-md-4">
-        {{beer.name}}
-        {{beer.abv}}
-        <img ng-src="{{beer.labels.medium}}" /><span ng-show="!beer.labels">No label was found for this beer. Sorry!</span>
-        {{beer.description}}<span ng-show="!beer.description.length">The external database has no description for this beer... Save your own thoughts in your diary!</span>
-        {{beer.ibu}}<span ng-show="!beer.ibu.length">The external database has no information on this beer's IBUs. Log what you think of the flavor profile in your diary!</span>
-        <button ng-click="saveBeer(beer)"></button>
+
+
+
+
+
+
+<div class="container-fluid responses" ng-click="searching = false">
+
+  <div class="oneBeer " ng-repeat="beer in beers | limitTo: 1 track by $index">
+    <div class="beerCard">
+      <h2>{{beer.name}}</h2>
+      <img ng-src="{{beer.labels.medium}}" /><span class="error" ng-show="!beer.labels">No image was found for this beer. Sorry!</span>
+      <br />
+      <span class="ibu" ng-hide="!beer.abv.length">{{beer.abv}}% abv. - </span><span class="error" ng-show="!beer.abv.length">We could not find information on this beer's alcoholic content. Sorry!</span>
+      <span class="ibu" ng-hide="!beer.ibu.length">{{beer.ibu}} IBUs.</span><span class="error" ng-show="!beer.ibu.length">The external database has no information on this beer's IBUs. Log what you think of the flavor profile in your diary!</span>
+      <br />
+      <br />
+      Description: {{beer.description}}<span class="error" ng-show="!beer.description.length">The external database has no description for this beer... Save your own thoughts in your diary!</span>
+      <div>
+        <br />
+        <span class="saveText">Save to your diary.</span>
+        <br / />
+        <button ng-click="saveBeer(beer)">Save</button>
+        <br />
+        <br />
+        <span class="moreText">Not quite the beer you were looking for? <span class="moreButton" ng-click="moreResults(beer.name)">Click here</span> for more results with a similar name...</span>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="moreBeers " ng-repeat="beer in moreBeers | limitTo: 12 track by $index">
+      <div class="beerCard">
+        <h2>{{beer.name}}</h2>
+        <img ng-src="{{beer.labels.medium}}" /><span class="error" ng-show="!beer.labels">No image was found for this beer. Sorry!</span>
+        <br />
+        <span class="ibu" ng-hide="!beer.abv.length">{{beer.abv}}% abv. - </span><span class="error" ng-show="!beer.abv.length">We could not find information on this beer's alcoholic content. Sorry!</span>
+        <span class="ibu" ng-hide="!beer.ibu.length">{{beer.ibu}} IBUs.</span><span class="error" ng-show="!beer.ibu.length">The external database has no information on this beer's IBUs. Log what you think of the flavor profile in your diary!</span>
+        <br />
+        <br />
+        Description: {{beer.description}}<span class="error" ng-show="!beer.description.length">The external database has no description for this beer... Save your own thoughts in your diary!</span>
+        <div>
+          <br />
+          <span class="saveText">Save to your diary.</span>
+          <br / />
+          <button ng-click="saveBeer(beer)">Save</button>
+          <br />
       </div>
     </div>
 

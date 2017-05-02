@@ -1,14 +1,15 @@
 /*body*/
-body {
-  background: url("components/img/pawel-kadysz-90225.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
 a  {
   text-decoration: none !important;
+}
+
+body {
+  background-color: black;
+}
+
+.row {
+  position: relative;
+  top: 100px;
 }
 /*body*/
 
@@ -21,7 +22,8 @@ a  {
   height: 80px;
   border: none;
   background-color: rgba(20, 20, 20, 0.7);
-  position: relative;
+  position: fixed;
+  z-index: 10000;
   top: -10px;
 }
 
@@ -141,6 +143,11 @@ a  {
 }
 /*hamburger*/
 
+
+
+
+
+
 /*navshowing*/
 .navSlide {
   width: 100vw;
@@ -171,8 +178,6 @@ a  {
   color: white;
 }
 
-
-
 .navSlide.ng-hide-remove {
   animation: 0.3s fadeIn ease;
 }
@@ -181,8 +186,17 @@ a  {
   animation: 0.3s fadeOut ease;
 }
 /*navshowing*/
-
 /*nav*/
+
+
+
+
+
+
+
+
+
+
 
 
 /*forms*/
@@ -193,37 +207,72 @@ a  {
 .formPage button {
   margin-bottom: 24px;
 }
+
+.changePass {
+  width: 80vw;
+  left: 10vw;
+}
 /*forms*/
 
 
+
+
+
+
+
+
+
+
+
+
 /*home*/
-.homeContainer {
-  background-color: rgba(20, 20, 20, 0.4);
-  width: 100vw;
+.bigImg {
+  position: fixed;
   min-height: 100vh;
+  width: 50vw;
+  top: 70px;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+.homeContainer {
   position: relative;
-  background-position: center;
-  background-attachment: fixed;
   left: 0px;
   top: -30px;
 }
 
-.homeContainer h1 {
+.wordsContainer {
+  position: relative;
+  left: 50vw;
+  width: 50vw;
+}
+
+.wordsContainer h1 {
   font-family: "Alex Brush", cursive;
   color: white;
   position: relative;
-  top: 36px;
-  left: 10%;
+  top: 100px;
+  left: 5%;
 }
 
-.homeContainer p {
+.wordsContainer a {
+  color: darkorange;
+  transition: all 0.3s ease;
+}
+
+.wordsContainer a:hover {
+  color: orange;
+  transition: all 0.3s ease;
+}
+
+.wordsContainer p {
   font-family: serif;
   color: white;
   position: relative;
-  font-size: 30px;
-  top: 36px;
-  left: 15%;
-  max-width: 70%;
+  font-size: 24px;
+  top: 100px;
+  left: 5%;
+  max-width: 90%;
 }
 
 .signed {
@@ -233,8 +282,8 @@ a  {
 
 .homeBtn {
   position: relative;
-  top: 60px;
-  left: 10%;
+  top: 30px;
+  left: 5%;
 }
 
 .homeBtn.ng-hide-remove{
@@ -244,9 +293,8 @@ a  {
 
 .findABeer {
   position: relative;
-  top: 60px;
-  width: 60vw;
-  left: 10%;
+  top: 30px;
+  left: 5%;
 }
 
 .findABeer.ng-hide-remove {
@@ -256,14 +304,238 @@ a  {
 
 
 
-/*cards*/
-.beerCard {
+/*userBeers*/
+.userBeerCard {
+  width: 80vw;
+  position: relative;
+  top: 100px;
+  left: 10vw;
+}
+
+.userLeftWrapper {
+  width: 50%;
+  position: relative;
+  left: 0px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-bottom: 1px;
+}
+
+.userRightWrapper {
+  position: absolute;
+  top: 0px;
+  width: 50%;
+  left: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.userRightWrapper.ng-hide-remove {
+  animation: flipInX 0.5s ease;
+}
+
+.userRightWrapper.ng-hide-add {
+  animation: flipOutX 0.5s ease;
+}
+
+.notes {
+  position: relative;
+  left: 40vw;
+  width: 100px;
+  margin-left: -100px;
+  color: teal;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.addYourOwn {
+  color: grey;
+  transition: all 0.2s ease;
+}
+
+.userForm.ng-hide-remove {
+  animation: fadeIn 0.5s ease;
+}
+
+.closer {
+  color: grey;
+  transition: all 0.2s ease;
+}
+
+.addYourOwn:hover {
+  color: teal;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.2s ease;
+}
+
+.closer:hover {
+  color: teal;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.2s ease;
+}
+
+.notes:hover {
+  color: grey;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.2s ease;
+}
+
+.notesSpan.ng-hide-remove {
+  animation: fadeIn 0.5s ease;
+}
+
+.notesSpan.ng-hide-add {
+  animation: fadeOut 0.5s ease;
+}
+
+.userEdit {
+  color: grey;
+  transition: all 0.2s ease;
+}
+
+.userEdit:hover {
+  color: teal;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.2s ease;
+}
+
+.closeUser {
+  color: grey;
+  transition: all 0.2s ease;
+}
+
+.closeUser.ng-hide-remove {
+  animation: waitIn 0.5s ease;
+}
+
+.closeUser:hover {
+  color: teal;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.0s ease;
+}
+
+.userBeerCard img{
+  margin-left: auto;
+  margin-right: auto;
   width: auto;
+  display: block;
+}
+/*userbeers*/
+
+
+
+
+
+
+
+
+
+/*cards*/
+.responses {
+  position: absolute;
+  top: 80px;
+  left: 10vw;
+  width: 30vw;
+}
+
+.beerCard {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
   height: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.beerCard img {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  display: block;
+}
+
+.beerCard button {
+  position: relative;
+  left: 80%
+}
+
+.moreButton {
+  color: darkorange;
+  transition: all 0.3s linear;
+}
+
+.moreButton:hover {
+  color: orange;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.error {
+  color: red;
+  display: block;
+  border: 1px solid red;
 }
 
 
+.moreText {
+  font-size: 12px;
+}
+
+.moreBeers button {
+  margin-bottom: 12px;
+}
+
+/*cards*/
+
+
+
+
+
+
+
+
+/*admin*/
+.adminContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.adminFilter {
+  position: absolute;
+  width: 200px;
+  margin-left: -100px;
+  left: 50vw;
+  top: 100px;
+}
+
+.beersListedResponse {
+  position: relative;
+  top: 150px;
+  max-width: 80vw;
+  left: 10vw;
+  color: lightgrey;
+}
+
+.beersListedResponse button, input {
+  color: black;
+}
+
+.usersListedResponse {
+  position: relative;
+  top: 150px;
+  max-width: 80vw;
+  left: 10vw;
+  color: lightgrey;
+}
+
+.usersListedResponse button, input {
+  color: black;
+}
 
 
 
@@ -314,6 +586,7 @@ a  {
   0% {
     transform: perspective(400px) rotate3d(1, 0, 0, 45deg);
     transition-timing-function: ease-in;
+    display: none;
   }
 
   50% {
@@ -361,6 +634,103 @@ a  {
   #nav-icon {
     display: block;
   }
+
+  .bigImg {
+    position: fixed;
+    min-height: 100vh;
+    width: 100vw;
+    top: 70px;
+    z-index: 0;
+    opacity: 0.8;
+  }
+
+  .wordsContainer {
+    position: relative;
+    left: 0vw;
+    width: 100vw;
+  }
+
+  .wordsContainer h1 {
+    font-family: "Alex Brush", cursive;
+    color: white;
+    position: relative;
+    top: 100px;
+    left: 5%;
+  }
+
+  .wordsContainer p {
+    font-family: serif;
+    color: white;
+    position: relative;
+    font-size: 24px;
+    top: 100px;
+    left: 5%;
+    max-width: 95%;
+  }
+
+  .signed {
+    position: relative;
+    left: 70% !important;
+  }
+
+  .homeBtn {
+    position: relative;
+    top: 30px;
+    left: 5%;
+  }
+
+  .findABeer {
+    position: relative;
+    top: 30px;
+    left: 5%;
+  }
+
+  .responses {
+    position: static;
+    margin-top: 50px;
+    left: 15vw;
+    width: 60vw;
+  }
+
+  .beerCard {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .beerCard button {
+    position: relative;
+    left: 80%
+  }
+
+  .moreButton {
+    color: darkorange;
+    transition: all 0.3s linear;
+  }
+
+  .moreButton:hover {
+    color: orange;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.3s linear;
+  }
+
+  .error {
+    color: red;
+    display: block;
+    border: 1px solid red;
+  }
+
+
+  .moreText {
+    font-size: 12px;
+  }
+
+  .moreBeers button {
+    margin-bottom: 12px;
+  }
 }
 
 @media (min-width: 950px){
@@ -373,21 +743,5 @@ a  {
   }
 }
 
-@media (max-width: 600px){
-  .homeContainer p {
-    font-family: serif;
-    color: white;
-    position: relative;
-    font-size: 16px;
-    top: 36px;
-    left: 5%;
-    max-width: 90%;
-  }
-
-  .signed {
-    position: relative;
-    left: 75% !important;
-  }
-}
 
 /*mediaqueries*/

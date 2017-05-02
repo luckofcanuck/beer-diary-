@@ -1,9 +1,13 @@
 var app = angular.module("BeerApp");
 
 app.controller("adminController", ["$scope", "$location", "UserService", "DiaryService", "$http", function($scope, $location, UserService, DiaryService, $http){
-  if (UserService.admin === false){
+  UserService.isUserIn();
+
+  if (UserService.currentUser.admin === false){
     alert("You are not authorized to view this page.");
-    $location.path("/home");
+    $location("/")
+  } else {
+    console.log("you good")
   }
 
   $scope.beers = [];
@@ -11,6 +15,7 @@ app.controller("adminController", ["$scope", "$location", "UserService", "DiaryS
 
 
   $scope.getBeers = function(){
+    $scope.users = [];
     return $http.get("/api/adBeer/").then(function(response){
       $scope.beers = response.data;
     })
@@ -32,6 +37,7 @@ app.controller("adminController", ["$scope", "$location", "UserService", "DiaryS
 
 
   $scope.getUsers = function(){
+    $scope.beers = [];
     return $http.get("api/admin/").then(function(response){
       $scope.users = response.data;
     })

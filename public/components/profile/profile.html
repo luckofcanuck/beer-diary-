@@ -1,22 +1,17 @@
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
+<div class="row changePass">
+      <div class="col-xs-12 formPage">
         <h1>{{ userService.currentUser.name }}</h1>
-        <hr>
-        <div class="row">
-            <div class="col-md-4">
-                <h3>Change Password</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="newPassword">New Password</label>
-                        <input type="password" id="newPassword" class="form-control" ng-model="passwords.newPassword">
-                    </div>
-                    <div class="form-group">
-                        <label for="newPasswordRepeat">Repeat New Password</label>
-                        <input type="password" id="newPasswordRepeat" class="form-control" ng-model="passwords.newPasswordRepeat">
-                    </div>
-                    <button class="btn btn-primary" ng-click="changePassword(passwords)">Change Password</button>
-                </form>
-            </div>
-        </div>
-    </div>
+          <h3>Change Password</h3>
+          <form>
+              <div class="form-group">
+                  <label for="newPassword">New Password</label>
+                  <input type="password" id="newPassword" class="form-control" ng-model="passwords.newPassword">
+              </div>
+              <div class="form-group">
+                  <label for="newPasswordRepeat">Repeat New Password</label>
+                  <input type="password" id="newPasswordRepeat" class="form-control" ng-model="passwords.newPasswordRepeat">
+              </div>
+              <button class="btn btn-primary" ng-click="changePassword(passwords)">Change Password</button>
+          </form>
+      </div>
 </div>
