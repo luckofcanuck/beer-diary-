@@ -13,12 +13,13 @@
       Beer Diary.</i>
     </p>
     <button class="btn btn-primary btn-lg homeBtn" ng-click="searching = !searching" ng-hide="searching">Find A Beer</button>
-    <div class="findABeer" ng-show="searching">
-      <input type="text" class="beerSearch" ng-model="beerName" />
-      <button class="btn btn-primary btn-md searchBtn" ng-click="findABeer(beerName)">Search</button>
-    </div>
+    <form class="findABeer" ng-show="searching">
+      <div class="form-group">
+        <input type="text" class="beerSearch" ng-model="beerName" />
+      </div>
+      <button class="btn btn-primary btn-md searchBtn" type="submit" ng-click="findABeer(beerName)">Search</button>
+    </form>
   </div>
-
 
 
 
