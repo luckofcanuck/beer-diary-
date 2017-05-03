@@ -22,7 +22,7 @@ body {
   height: 80px;
   border: none;
   background-color: rgba(20, 20, 20, 0.7);
-  position: fixed;
+  position: absolute;
   z-index: 10000;
   top: -10px;
 }
@@ -442,14 +442,6 @@ body {
   width: 30vw;
 }
 
-.beerCard {
-  position: relative;
-  width: 100%;
-  margin-top: 20px;
-  height: auto;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
 .beerCard img {
   margin-left: auto;
   margin-right: auto;
@@ -647,15 +639,6 @@ body {
     width: 100vw;
   }
 
-  .wordsContainer h1 {
-    font-family: "Alex Brush", cursive;
-    color: white;
-    position: relative;
-    top: 100px;
-    left: 5%;
-    max-width: 95%;
-  }
-
   .wordsContainer p {
     font-family: serif;
     color: white;
@@ -664,18 +647,6 @@ body {
     top: 100px;
     left: 5%;
     max-width: 85%;
-  }
-
-  .homeBtn {
-    position: relative;
-    top: 50px;
-    left: 5%;
-  }
-
-  .findABeer {
-    position: relative;
-    top: 50px;
-    left: 5%;
   }
 
   .responses {
@@ -691,34 +662,6 @@ body {
     margin-top: 20px;
     height: auto;
     background-color: rgba(255, 255, 255, 0.8);
-  }
-
-
-  .moreButton {
-    color: darkorange;
-    transition: all 0.3s linear;
-  }
-
-  .moreButton:hover {
-    color: orange;
-    text-decoration: underline;
-    cursor: pointer;
-    transition: all 0.3s linear;
-  }
-
-  .error {
-    color: red;
-    display: block;
-    border: 1px solid red;
-  }
-
-
-  .moreText {
-    font-size: 12px;
-  }
-
-  .moreBeers button {
-    margin-bottom: 12px;
   }
 }
 
