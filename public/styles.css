@@ -458,11 +458,6 @@ body {
   display: block;
 }
 
-.beerCard button {
-  position: relative;
-  left: 80%
-}
-
 .moreButton {
   color: darkorange;
   transition: all 0.3s linear;
@@ -698,10 +693,6 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
   }
 
-  .beerCard button {
-    position: relative;
-    left: 80%
-  }
 
   .moreButton {
     color: darkorange;
